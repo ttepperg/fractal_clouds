@@ -1,0 +1,35 @@
+(C) Thor Tepper-Garcia (2017)
+
+# Installation
+
+If you have a working C compiler on your system, installing this programm
+should be as easy as running the compiling script provided with this
+distribution in the shell:
+
+?> ./compile_script.bash
+
+
+# Run
+
+The previous step will create an executable, 'fractalClouds', which may
+be run simply by invoking in the shell:
+
+?> ./fractalClouds
+
+
+# Input
+
+The values of the input parameters are changed by editing the file:
+
+./src/fractalClouds.h
+
+accordingly.
+
+DO NOT FORGET TO RE-COMPILE AFTER EDITING FOR THE CHANGES TO HAVE AN EFFECT!
+
+
+# Output
+
+For more information about this program, the input parameters, output, 
+etc., please consult the documentation; e.g. open in a broswer the file doc/html/index.html.
+

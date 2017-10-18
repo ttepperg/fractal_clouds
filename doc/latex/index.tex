@@ -1,0 +1,97 @@
+This code generates a {\itshape log-\/normal} random density field $H$ with a power spectrum $P(k) \propto k^{\beta}$, with $\beta < 0$, with a specified index $1 < |\beta| < 3$, and specified one-\/point statistics (i.\+e. mean $ \mu $ and variance $ \sigma^2 $). $F$ is the Fourier transform of $H$. It is an implementation of the algorithm by \href{https://ams.confex.com/ams/11AR11CP/techprogram/paper_42772.htm}{\tt Lewis \& Austin (2002)}, with some modifications (see below). This algorithm has been successfully used by, e.\+g., \href{http://stacks.iop.org/0004-637X/591/i=1/a=238}{\tt Sutherland \& Bicknell (2003)}, \href{http://adsabs.harvard.edu/abs/2007ApJS..173...37S}{\tt Sutherland \& Bicknell (2007)} to generate fractal gas clouds such as the one used by \href{http://adsabs.harvard.edu/abs/2007ApJ...670L.109B}{\tt Bland-\/\+Hawthorn et al. (2007)}, \href{http://adsabs.harvard.edu/abs/2008ApJ...674..157C}{\tt Cooper et al. (2008)} and \href{http://adsabs.harvard.edu/abs/2015ApJ...813...94T}{\tt Tepper-\/\+Garcia et al. (2015a)}. The code is for now only available in serial.
+
+\begin{DoxyNote}{Note}
+One-\/dimensional (1\+D) simulation power spectra are very noisy, since their value at each wavenumber includes at most two contributions. In contrast, 8$\ast$(k-\/1) and 2$\ast$(12$\ast$(k-\/1)$\ast$(k-\/1) + 1) values enter into the calculation of the power spectrum at each wavelength k = 1, 2, ... in 2\+D and 3\+D simulations, respectively, and appear therefore smoother than 1\+D power spectra, even more so with increasing k.
+\end{DoxyNote}
+{\bfseries  Modifications }
+
+
+\begin{DoxyItemize}
+\item The mother Gaussian random field is initially generated with target $m = 0$ and variance $s^2 = 1$. At each iteration, the statistics are measured and any deviations from the target values are adjusted by negatively shifting the field by its actual mean, and scaling down by its actual standard deviation. This ensures that the log-\/normal target statistics are maintained to machine precision.
+\item No fit to the power spectrum is required due to the procedure above
+\item The polynomial fit to the power spectrum of the log-\/normal field is (by default, but can be overriden by user) replaced by a smoothing using a Savitzky-\/\+Golay filter. This allows for the construction of a more accurate, final power spectrum.
+\item A minimum wavelength $ k_{min} > $ can be enforced, such that only modes with $ k >= k_{min} $ are allowed, thus limiting the typical, {\itshape maximum} (linear) size of the cloudlets relative to the grid (if the linear dimension of grid is $ {\rm DIM} $, the minium scales will be ${\rm DIM}/2$, and the largest cloudlets will be of order ${\rm DIM}/(2 k_{min})$).
+\end{DoxyItemize}
+
+{\bfseries  Accompanying software }
+
+{\ttfamily \hyperlink{plot_field_8gp_source}{plot\+Field.\+gp}\+:} An editable gnuplot script to visualise the result. Edits include setting the dimensionality of the problem, and the field to visualise. Requires gnuplot 4.\+6 or higher. The output consists on a comparison of the final Gaussian and log-\/normal power spectra; a visualisation of the the Gaussian or log-\/normal (by choice of user) random field at convergence; and the probability distribution of the Gaussian or log-\/normal (by choice of user) density together with a Gaussian fit. Note that the later corresponds to the actual density for the Gaussian field, and to the logarithm of the density for the log-\/normal field. The visualisation of the random field at convergence in the 3\+D case corresponds to a series of x-\/slices through the volume.
+
+\begin{DoxyNote}{Note}
+The code and the accompanying software are still experimental, but they can be obtained upon request (\href{mailto:tepper@physics.usyd.edu.au}{\tt tepper@physics.\+usyd.\+edu.\+au}).
+\end{DoxyNote}
+{\bfseries Code verification}
+
+We verify our code in two ways\+: 1) By running a simulation with the same parameters as the one presented in \href{https://ams.confex.com/ams/pdfpapers/42772.pdf}{\tt Lewis \& Austin (2002)\textquotesingle{}s article} and comparing (albeit only visually) to their results. 2) By running a 3\+D simulation with specified target log-\/normal statistics ( $ \mu, \, \sigma $) and assessing the results.
+
+{\bfseries Comparison to Lewis \& Austin (2002)}
+
+A sample output of a 2\+D simulation (N = 512) of a log-\/normal random field with $\beta = -1.5$, generated from a Gaussian random field with mean $m = 0$ and variance $s^2 = 4$ is shown below (Figure 1). The corresponding mean $\mu$ and standard deviation $\sigma$ of the log-\/normal field for this particular realisation are indicated on the plot (See \href{http://adsabs.harvard.edu/abs/2007ApJS..173...37S}{\tt Sutherland \& Bicknell 2007} ; their appendix B for the relation between $m$, $s$, $\mu$ and $\sigma$). Note that the relatively modest Gaussian parameters translate into quite high log-\/normal parameters. Such high values may negatively affect the accuracy of the method.
+
+Note that this simulation has been run with the settings (see the corresponding source file for more information)\+:
+
+\begin{DoxyVerb}    #define FLOAT 0
+    #define DOUBLE 1
+    #define MAX_ITER 15
+    #define BINARYOUT 1
+    #define RANDOM 0
+    #define NYQUIST 0
+    #define BETA (-1.5)
+    #define KMIN 1
+    #define SIG2_GAUSS 4.
+    #define MU_GAUSS 0.
+    #define SIM2D 2
+    #define DIM (512)
+    #define SGFILTER 0
+    #define POLYFIT 1
+    #define POLYDEG 3
+\end{DoxyVerb}
+
+
+In particular, the choice of R\+A\+N\+D\+O\+M set to 0 allows the simulation to be reproduced exactly.
+
+
+
+{\bfseries A full, 3\+D simulation}
+
+Below, a sample output of a more realistic, 3\+D simulation following \href{http://adsabs.harvard.edu/abs/2007ApJS..173...37S}{\tt Sutherland \& Bicknell (2007)}. In brief, a log-\/normal (fractal) distribution with $ \mu = 1 $ and $ \sigma^2 = 5 $ (corresponding to $ m = -0.896 $ and $ \sigma = 1.34 $), and a power-\/spectrum index $ \beta = -5/3 $ is generated over a $ 256^3 $ cube, allowing only modes with $ k_{min} \geq 20 $. The fact that the distribution of the logarithm of the density is nearly exactly Gaussian with parameters close to their target counterparts (see left panel of Figure 2) is reassuring. The power spectrum slope differs only marginally from its target value. And, as can be appreciated from Figure 3 below, the typical size of the largest cloudlets is indeed of the order of $ 128/20 \approx 6$.
+
+Note that this simulation has been run with the settings\+:
+
+\begin{DoxyVerb}    #define FLOAT 0
+    #define DOUBLE 1
+    #define MAX_ITER 15
+    #define BINARYOUT 1
+    #define RANDOM 0
+    #define NYQUIST 0
+    #define BETA (-5./3.)
+    #define KMIN 20
+    #define SIG2_GAUSS 0.
+    #define SIG2_LOGN 5.
+    #define MU_LOGN 0.
+    #define SIM2D 3
+    #define DIM (256)
+    #define SGFILTER 1
+    #define SGORDER 1
+    #define HALFWINDOW 2
+\end{DoxyVerb}
+
+
+Note that setting {\ttfamily S\+I\+G2\+\_\+\+G\+A\+U\+S\+S = 0.} is important, as otherwise the value of {\ttfamily S\+I\+G2\+\_\+\+L\+O\+G\+N} and {\ttfamily M\+U\+\_\+\+L\+O\+G\+N} would be ignored.
+
+
+
+\begin{DoxyAuthor}{Author}
+Thor Tepper Garcia (\href{mailto:tepper@physics.usyd.edu.au}{\tt tepper@physics.\+usyd.\+edu.\+au})
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Last updated\+: Dec 2, 2016
+\end{DoxyDate}
+{\bfseries References} 
+\begin{DoxyItemize}
+\item Press, W.\+H. and Teukolsky, S.\+A. and Vetterling, W.\+T. and Flannery, B.\+P., \char`\"{}\+Numerical Recipes in C\char`\"{}, Cambridge University Press, 1992, Second Edition
+\item Lewis, G. M. and Austin, P. H., \char`\"{}\+An iterative method for generating scaling log-\/normal simulations\char`\"{}, Proceedings of the 11th Conference on Atmospheric Radiation, 2002, American Meteorological Society Conference Series 123-\/126
+\item Sutherland, Ralph S. and Bicknell, Geoffrey V. and Dopita, Michael A., \char`\"{}\+The Numerical Simulation of Radiative Shocks. I\+I. Thermal Instabilities in Two-\/dimensional Models\char`\"{}, 2003, The Astrophysical Journal, Volume 591, Number 1, Pages, 238-\/257
+\item Sutherland, R.\+S. and Bicknell, G.\+V., \char`\"{}\+Interactions of a Light Hypersonic Jet with a Nonuniform Interstellar Medium\char`\"{}, The Astrophysical Journal Supplement, 2007, Volume 173, Pages 37-\/69
+\item Cooper, J.\+L. and Bicknell, G.\+V. and Sutherland, R.\+S. and Bland-\/\+Hawthorn, J., \char`\"{}\+Three-\/\+Dimensional Simulations of a Starburst-\/driven Galactic Wind\char`\"{}, The Astrophysical Journal, 2008, Volume 674, Pages 157-\/171 February 
+\end{DoxyItemize}

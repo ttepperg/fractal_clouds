@@ -1,0 +1,220 @@
+\hypertarget{fractals_8c}{}\section{fractals.\+c File Reference}
+\label{fractals_8c}\index{fractals.\+c@{fractals.\+c}}
+
+
+Fractal cloud generator.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$float.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}alloc\+\_\+funcs.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dnrutil.\+h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{fractals_8c_ad72dbcf6d0153db1b8d8a58001feed83}{}\#define \hyperlink{fractals_8c_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+U\+G}~0\label{fractals_8c_ad72dbcf6d0153db1b8d8a58001feed83}
+
+\begin{DoxyCompactList}\small\item\em Set to 1 for debbuging. \end{DoxyCompactList}\item 
+\hypertarget{fractals_8c_acd517c6f195c75b9dd0f3aad65326f3b}{}\#define \hyperlink{fractals_8c_acd517c6f195c75b9dd0f3aad65326f3b}{M\+A\+X\+\_\+\+I\+T\+E\+R}~15\label{fractals_8c_acd517c6f195c75b9dd0f3aad65326f3b}
+
+\begin{DoxyCompactList}\small\item\em Number of iterations (min\+: 0) \end{DoxyCompactList}\item 
+\hypertarget{fractals_8c_a40e50fa221760791780042ebbd180c7f}{}\#define \hyperlink{fractals_8c_a40e50fa221760791780042ebbd180c7f}{B\+I\+N\+A\+R\+Y\+O\+U\+T}~1\label{fractals_8c_a40e50fa221760791780042ebbd180c7f}
+
+\begin{DoxyCompactList}\small\item\em Set to 1 (0) to (not) write out binary file. \end{DoxyCompactList}\item 
+\hypertarget{fractals_8c_a724484a23cab81c63f4c7f9136a70371}{}\#define \hyperlink{fractals_8c_a724484a23cab81c63f4c7f9136a70371}{R\+A\+N\+D\+O\+M}~0\label{fractals_8c_a724484a23cab81c63f4c7f9136a70371}
+
+\begin{DoxyCompactList}\small\item\em Set to 1 to use a random (otherwise fixed to -\/1) random-\/generator seed. \end{DoxyCompactList}\item 
+\hypertarget{fractals_8c_a6de4af610566ac2309352c0dba369479}{}\#define \hyperlink{fractals_8c_a6de4af610566ac2309352c0dba369479}{N\+Y\+Q\+U\+I\+S\+T}~0\label{fractals_8c_a6de4af610566ac2309352c0dba369479}
+
+\begin{DoxyCompactList}\small\item\em Set to 1 to include Nyquist frequency in power spectrum. \end{DoxyCompactList}\item 
+\#define \hyperlink{fractals_8c_a1b996515309fc3c03449912bb33046e3}{B\+E\+T\+A}~(-\/1.\+5)
+\item 
+\hypertarget{fractals_8c_ac90a350d957048c5b777f5b18a89d395}{}\#define \hyperlink{fractals_8c_ac90a350d957048c5b777f5b18a89d395}{K\+M\+I\+N}~0.\label{fractals_8c_ac90a350d957048c5b777f5b18a89d395}
+
+\begin{DoxyCompactList}\small\item\em Minimum wavenumber (i.\+e., largest scale) to be present. \end{DoxyCompactList}\item 
+\#define \hyperlink{fractals_8c_ac25189db92959bff3c6c2adf4c34b50a}{D\+I\+M}~(1024)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{fractals_8c_a0fcf6b1e7af274ea6da86a33b7fd8b18}{dgasdev} (long $\ast$idum)
+\item 
+double \hyperlink{fractals_8c_a22f1b9b3a658ba9c154301ba817502d1}{dran1} (long $\ast$idum)
+\item 
+void \hyperlink{fractals_8c_aec3991c4b40cdca328d4337f8fbdd03d}{dfourn} (double data\mbox{[}$\,$\mbox{]}, unsigned long nn\mbox{[}$\,$\mbox{]}, int ndim, int isign)
+\item 
+void \hyperlink{fractals_8c_a98dd2900edb0f1c76ff037559b2647aa}{dlfit} (double x\mbox{[}$\,$\mbox{]}, double y\mbox{[}$\,$\mbox{]}, double sig\mbox{[}$\,$\mbox{]}, int ndat, double a\mbox{[}$\,$\mbox{]}, int ia\mbox{[}$\,$\mbox{]}, int ma, double $\ast$$\ast$covar, double $\ast$chisq, void($\ast$funcs)(double, double\mbox{[}$\,$\mbox{]}, int))
+\item 
+short \hyperlink{fractals_8c_aa4a1a822ffa555d11a6835ccb15ee00c}{wrap} (short i, short n, short m)
+\item 
+double \hyperlink{fractals_8c_a32cf7a21a800e049c8aee6bbaf84c80a}{sed} (double k, double s)
+\item 
+void \hyperlink{fractals_8c_a018e3dc770509d6215b22070246b977e}{poly} (double x, double pn\mbox{[}$\,$\mbox{]}, int n)
+\item 
+int \hyperlink{fractals_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Fractal cloud generator. 
+
+This code generates a {\itshape single-\/point} log-\/normal random field {\bfseries {\itshape H}} -\/ via exponentiation of a {\itshape seed} Gaussian random field {\bfseries {\itshape G}} -\/ that has a power spectrum $P(k) \propto k^{\beta}$, with $\beta < 0$, with a specified index $1 < |\beta| < 3$. $F$ is the Fourier transform of $H$. It is an implementation of the algorithm by \href{http://www.eos.ubc.ca/research/clouds/radjp416}{\tt Lewis \& Austin (2002)}, used by, e.\+g., \href{http://stacks.iop.org/0004-637X/591/i=1/a=238}{\tt Sutherland \& Bicknell (2003)}, \href{http://adsabs.harvard.edu/abs/2007ApJS..173...37S}{\tt Sutherland \& Bicknell (2007)} to generate fractal gas clouds such as the one used by \href{http://adsabs.harvard.edu/abs/2007ApJ...670L.109B}{\tt Bland-\/\+Hawthorn et al. (2007)} and Tepper-\/\+Garcia et al. (2015a). For now only available in serial.
+
+\begin{DoxyAttention}{Attention}
+We make use of a number of routines provided by the Numerical Recipes (N\+R). These have all been modified to double (rather than float) precision. For this reason, all the N\+R routine names have been pre-\/appended with a \textquotesingle{}d\textquotesingle{}, i.\+e. {\ttfamily gasdev} has been renamed to {\ttfamily dgasdev}. Also, N\+R routines adopt the \char`\"{}unit-\/offset\char`\"{} convention, meaning that the lowest subscript of an array is 1 (rather than 0 as in A\+N\+S\+I C). We use the functions provided by {\ttfamily dnrutil} to allocate matrices and tensors for consistency with other N\+R routines.~\newline
+ Both the Gaussian ad log-\/normal random field are considered {\itshape complex} (although the imaginary part is set to 0 in the initial Gaussian random field), since their respective Fourier transform will be in general complex. For this reason, we use of the routines {\ttfamily dfour1} and {\ttfamily dfourn} to compute F\+F\+T in 1 and 2,3 dimensions, respectively. Note that C does not provide a complex data type, and thus a complex number consists of a pair of real numbers, each member representing the real and imaginary part, respectively.
+\end{DoxyAttention}
+{\bfseries Compilation} (or replace gcc-\/mp-\/4.\+9 by your gcc compiler)
+
+\$$>$ gcc-\/mp-\/4.\+9 dnrutil.\+c dfour1.\+c dfourn.\+c dran1.\+c dgasdev.\+c dgammln.\+c dgcf.\+c dgser.\+c dgammq.\+c dfit.\+c dlfit.\+c dcovsrt.\+c dgaussj.\+c alloc\+\_\+funcs.\+c \hyperlink{fractals_8c}{fractals.\+c} -\/o fractals
+
+{\bfseries  Program call }
+
+\$$>$ ./fractals
+
+{\bfseries Output} 
+
+All files are simple binary files of type double (8 byte) per value. For a simulation with dimensionality N=1,2,3, size D\+I\+M, and iteration number \#, these files are\+:
+\begin{DoxyItemize}
+\item {\ttfamily gauss\+Nd\+\_\+ini.\+bdat\+:} File with the initial Gaussian random field, and it contains $2({\rm DIM})^{\rm N}$ values. Each pair of consecutive values correspond to the real and imaginary part of a complex number representing the value of the field at $x$, $(x,y)$, or $(x,y,z)$ for N=1, 2, or 3, respectively. The values are stored contiguously along the $x$-\/coordinate, followed by $y$, and $z$.
+\item {\ttfamily  pow\+Spec\+Nd\+\_\+$<$field$>$\#.bdat }\+: Power spectrum $P(k)$ of the $<$field$>$ = gauss $\vert$ lognorm. The file contains D\+I\+M numbers, each representing the value of $P(k)$ at $k_n$, where $k_n = n$/\+D\+I\+M, $n = 0, 1, ...,$D\+I\+M-\/1.
+\item {\ttfamily  search\+Dir\+Nd\+\_\+\#.bdat }\+: Search direction, i.\+e., difference between target and current (at iteratiom \#) power spectrum of log-\/normal random field. The data structure is the same as {\ttfamily  pow\+Spec\+Nd\+\_\+$<$field$>$\#.bdat}.
+\item {\ttfamily  $<$field$>$Nd\+\_\+filt }\+: Final random field, where $<$field$>$ = gauss $\vert$ lognorm. The data structure is the same as {\ttfamily gauss\+Nd\+\_\+ini.\+bdat}.
+\end{DoxyItemize}
+
+{\bfseries  Accompanying software }
+
+
+\begin{DoxyItemize}
+\item {\ttfamily plot\+Field.\+gp\+:} An editable gnuplot script to visualise the result. Edits include setting the dimensionality of the problem, and the field to visualise. Requires gnuplot 4.\+6 or higher.
+\end{DoxyItemize}
+
+Script call\+:
+
+\$$>$ gnuplot plot\+Field.\+gp
+
+\begin{DoxyAuthor}{Authors}
+T.\+Tepper Garcia (\href{mailto:tepper@physics.usyd.edu.au}{\tt tepper@physics.\+usyd.\+edu.\+au})
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Oct 16, 2015
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]
+\begin{DoxyItemize}
+\item Include an example (power spectrum, density distribution) in Doxygen documentation
+\item Compute mean and variance of Gaussian and log-\/normal fields at each iteration to ensure that these are conserved
+\item Write mean and variance to stdout at each iteration
+\item Include restriction on minimum wavenumber
+\item Encode convergence condition to terminate iteration
+\item Improve format of output to screen to be informative
+\item Write initial guess for spectral density to disk (binary)
+\item Encapsulate computation of target spectral density into a callable function
+\item Encapsulate computation of power spectrum into a callable function
+\item Encapsulate computation of new spectral density into a callable function
+\item Encapsulate computation of search direction into a callable function
+\item Encapsulate writing of binary files into a callable function
+\item Expand plot\+Field.\+gp documentation
+\item Modify plot\+Field.\+gp to output both the Gaussian and log-\/normal final fields, as well as their respective power spectra, and perhaps the evolution of the power spectrum with iteration
+\item Parallelise code
+\end{DoxyItemize}\end{DoxyRefDesc}
+
+
+{\bfseries  Modification history }
+
+{\bfseries References} 
+\begin{DoxyItemize}
+\item Press, W.\+H. and Teukolsky, S.\+A. and Vetterling, W.\+T. and Flannery, B.\+P., \char`\"{}\+Numerical Recipes in C\char`\"{}, Cambridge University Press, 1992, Second Edition
+\item Lewis, G. M. and Austin, P. H., \char`\"{}\+An iterative method for generating scaling log-\/normal simulations\char`\"{}, Proceedings of the 11th Conference on Atmospheric Radiation, 2002, American Meteorological Society Conference Series 123-\/126
+\item Sutherland, Ralph S. and Bicknell, Geoffrey V. and Dopita, Michael A., \char`\"{}\+The Numerical Simulation of Radiative Shocks. I\+I. Thermal Instabilities in Two-\/dimensional Models\char`\"{}, 2003, The Astrophysical Journal, Volume 591, Number 1, Pages, 238-\/257
+\item Sutherland, R.\+S. and Bicknell, G.\+V., \char`\"{}\+Interactions of a Light Hypersonic Jet with a Nonuniform Interstellar Medium\char`\"{}, The Astrophysical Journal Supplement, 2007, Volume 173, Pages 37-\/69 
+\end{DoxyItemize}
+
+\subsection{Macro Definition Documentation}
+\hypertarget{fractals_8c_a1b996515309fc3c03449912bb33046e3}{}\index{fractals.\+c@{fractals.\+c}!B\+E\+T\+A@{B\+E\+T\+A}}
+\index{B\+E\+T\+A@{B\+E\+T\+A}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{B\+E\+T\+A}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+E\+T\+A~(-\/1.\+5)}\label{fractals_8c_a1b996515309fc3c03449912bb33046e3}
+$\beta$ $<$ 0 is the power-\/law index of the target power spectrum $P(k) \propto k^{\beta}$. Note that the spectral density $|F|^2$ will be a power-\/law $k^s$ with $s = \beta - (n - 1)$, where $n$ is the number of dimensions. \hypertarget{fractals_8c_ac25189db92959bff3c6c2adf4c34b50a}{}\index{fractals.\+c@{fractals.\+c}!D\+I\+M@{D\+I\+M}}
+\index{D\+I\+M@{D\+I\+M}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{D\+I\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+I\+M~(1024)}\label{fractals_8c_ac25189db92959bff3c6c2adf4c34b50a}
+I\+M\+P\+O\+R\+T\+A\+N\+T\+: grid dimensions need to be each a power of 2, A\+N\+D all need to be equal! N\+O\+T\+E that the size of the simulation should be half the size define by D\+I\+M (to avoid aliasing effects when F\+F\+T-\/ing) Can achieve this by sampling half of the actual simulation size; but not yet implemented 
+
+\subsection{Function Documentation}
+\hypertarget{fractals_8c_aec3991c4b40cdca328d4337f8fbdd03d}{}\index{fractals.\+c@{fractals.\+c}!dfourn@{dfourn}}
+\index{dfourn@{dfourn}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{dfourn}]{\setlength{\rightskip}{0pt plus 5cm}void dfourn (
+\begin{DoxyParamCaption}
+\item[{double}]{data\mbox{[}$\,$\mbox{]}, }
+\item[{unsigned long}]{nn\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{ndim, }
+\item[{int}]{isign}
+\end{DoxyParamCaption}
+)}\label{fractals_8c_aec3991c4b40cdca328d4337f8fbdd03d}
+Replaces data by its ndim-\/dimensional discrete Fourier transform, if isign is input as 1. nn\mbox{[}1..ndim\mbox{]} is an integer array containing the length of each dimension (number of complex values), which M\+U\+S\+T all be powers of 2. data is a real array of length twice the product of these lengths, in which the data are stored as in a multidimensional complex array\+: real and imaginary parts of each element are in consecutive locations, and the rightmost index of the array increases most rapidly as one proceeds along data. For a two-\/dimensional array, this is equivalent to storing the array by rows. If isign is input as -\/1, data is replaced by its inverse transform times the product of the lengths of all dimensions. \hypertarget{fractals_8c_a0fcf6b1e7af274ea6da86a33b7fd8b18}{}\index{fractals.\+c@{fractals.\+c}!dgasdev@{dgasdev}}
+\index{dgasdev@{dgasdev}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{dgasdev}]{\setlength{\rightskip}{0pt plus 5cm}double dgasdev (
+\begin{DoxyParamCaption}
+\item[{long $\ast$}]{idum}
+\end{DoxyParamCaption}
+)}\label{fractals_8c_a0fcf6b1e7af274ea6da86a33b7fd8b18}
+Returns a normally distributed deviate with zero mean and unit variance, using dran1(idum) as the source of uniform deviates.\hypertarget{fractals_8c_a98dd2900edb0f1c76ff037559b2647aa}{}\index{fractals.\+c@{fractals.\+c}!dlfit@{dlfit}}
+\index{dlfit@{dlfit}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{dlfit}]{\setlength{\rightskip}{0pt plus 5cm}void dlfit (
+\begin{DoxyParamCaption}
+\item[{double}]{x\mbox{[}$\,$\mbox{]}, }
+\item[{double}]{y\mbox{[}$\,$\mbox{]}, }
+\item[{double}]{sig\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{ndat, }
+\item[{double}]{a\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{ia\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{ma, }
+\item[{double $\ast$$\ast$}]{covar, }
+\item[{double $\ast$}]{chisq, }
+\item[{void($\ast$)(double, double\mbox{[}$\,$\mbox{]}, int)}]{funcs}
+\end{DoxyParamCaption}
+)}\label{fractals_8c_a98dd2900edb0f1c76ff037559b2647aa}
+Given a set of data points x\mbox{[}1..ndat\mbox{]}, y\mbox{[}1..ndat\mbox{]} with individual standard deviations sig\mbox{[}1..ndat\mbox{]}, use $\chi^2$ minimization to fit for some or all of the coefficients a\mbox{[}1..ma\mbox{]} of a function that depends linearly on a, y = sum(ai$\ast$afunci(x)). The input array ia\mbox{[}1..ma\mbox{]} indicates by nonzero entries those components of a that should be fitted for, and by zero entries those components that should be held fixed at their input values. The program returns values for a\mbox{[}1..ma\mbox{]}, $\chi^2$ = chisq, and the covariance matrix covar\mbox{[}1..ma\mbox{]}\mbox{[}1..ma\mbox{]}. (Parameters held fixed will return zero covariances.) The user supplies a routine funcs(x,afunc,ma) that returns the ma basis functions evaluated at x = x in the array afunc\mbox{[}1..ma\mbox{]}. \hypertarget{fractals_8c_a22f1b9b3a658ba9c154301ba817502d1}{}\index{fractals.\+c@{fractals.\+c}!dran1@{dran1}}
+\index{dran1@{dran1}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{dran1}]{\setlength{\rightskip}{0pt plus 5cm}double dran1 (
+\begin{DoxyParamCaption}
+\item[{long $\ast$}]{idum}
+\end{DoxyParamCaption}
+)}\label{fractals_8c_a22f1b9b3a658ba9c154301ba817502d1}
+“\+Minimal” random number generator of Park and Miller with Bays-\/\+Durham shuffle and added safeguards. Returns a uniform random deviate between 0.\+0 and 1.\+0 (exclusive of the endpoint values). Call with idum a negative integer to initialize; thereafter, do not alter idum between successive deviates in a sequence. R\+N\+M\+X should approximate the largest doubleing value that is less than 1. \hypertarget{fractals_8c_a0ddf1224851353fc92bfbff6f499fa97}{}\index{fractals.\+c@{fractals.\+c}!main@{main}}
+\index{main@{main}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{fractals_8c_a0ddf1224851353fc92bfbff6f499fa97}
+Main Program\hypertarget{fractals_8c_a018e3dc770509d6215b22070246b977e}{}\index{fractals.\+c@{fractals.\+c}!poly@{poly}}
+\index{poly@{poly}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{poly}]{\setlength{\rightskip}{0pt plus 5cm}void poly (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{pn\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{fractals_8c_a018e3dc770509d6215b22070246b977e}
+Computes and returns in order in array pn each of the n+1 terms of a polynomial of degree n evaluated at x\hypertarget{fractals_8c_a32cf7a21a800e049c8aee6bbaf84c80a}{}\index{fractals.\+c@{fractals.\+c}!sed@{sed}}
+\index{sed@{sed}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{sed}]{\setlength{\rightskip}{0pt plus 5cm}double sed (
+\begin{DoxyParamCaption}
+\item[{double}]{k, }
+\item[{double}]{s}
+\end{DoxyParamCaption}
+)}\label{fractals_8c_a32cf7a21a800e049c8aee6bbaf84c80a}
+Returns the value of a power-\/law k$^\wedge$s\hypertarget{fractals_8c_aa4a1a822ffa555d11a6835ccb15ee00c}{}\index{fractals.\+c@{fractals.\+c}!wrap@{wrap}}
+\index{wrap@{wrap}!fractals.\+c@{fractals.\+c}}
+\subsubsection[{wrap}]{\setlength{\rightskip}{0pt plus 5cm}short wrap (
+\begin{DoxyParamCaption}
+\item[{short}]{i, }
+\item[{short}]{n, }
+\item[{short}]{m}
+\end{DoxyParamCaption}
+)}\label{fractals_8c_aa4a1a822ffa555d11a6835ccb15ee00c}
+Calculates the value of index i wrapped-\/around (to the right) n places on an array of size m

@@ -1,0 +1,257 @@
+\hypertarget{fractal_clouds_8c}{}\section{fractal\+Clouds.\+c File Reference}
+\label{fractal_clouds_8c}\index{fractal\+Clouds.\+c@{fractal\+Clouds.\+c}}
+
+
+Fractal cloud generator.  
+
+
+{\ttfamily \#include \char`\"{}fractal\+Clouds\+Defs.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$float.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}alloc\+\_\+funcs.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dnrutil.\+h\char`\"{}}\\*
+Include dependency graph for fractal\+Clouds.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fractal_clouds_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Real \hyperlink{fractal_clouds_8c_ad0668833fda9670b2eab57dec1055407}{dgasdev} (long $\ast$idum)
+\item 
+Real \hyperlink{fractal_clouds_8c_ad24ce1ceb07571998ddd87a5170417f7}{dran1} (long $\ast$idum)
+\item 
+void \hyperlink{fractal_clouds_8c_ae8ac8c4c882deabed6593cac8c25ed93}{dfourn} (Real data\mbox{[}$\,$\mbox{]}, unsigned long nn\mbox{[}$\,$\mbox{]}, int ndim, int isign)
+\item 
+void \hyperlink{fractal_clouds_8c_a708122911cdad73c7f5f4b6ca10fcb73}{dlfit} (Real x\mbox{[}$\,$\mbox{]}, Real y\mbox{[}$\,$\mbox{]}, Real sig\mbox{[}$\,$\mbox{]}, int ndat, Real a\mbox{[}$\,$\mbox{]}, int ia\mbox{[}$\,$\mbox{]}, int ma, Real $\ast$$\ast$covar, Real $\ast$chisq, void($\ast$funcs)(Real, Real\mbox{[}$\,$\mbox{]}, int))
+\item 
+short \hyperlink{fractal_clouds_8c_aa4a1a822ffa555d11a6835ccb15ee00c}{wrap} (short i, short n, short m)
+\item 
+Real \hyperlink{fractal_clouds_8c_a3247fe4ebaa8e879559dcd2ff56e8d77}{sed} (Real k, Real s)
+\item 
+void \hyperlink{fractal_clouds_8c_a0cab6f6ad3b48f7d25956838225d07dc}{poly} (Real x, Real pn\mbox{[}$\,$\mbox{]}, int n)
+\item 
+int \hyperlink{fractal_clouds_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Fractal cloud generator. 
+
+This code generates a {\itshape single-\/point} log-\/normal random density field {\bfseries {\itshape H}} -\/ via exponentiation of a {\itshape seed} Gaussian random field {\bfseries {\itshape G}} -\/ that has a power spectrum $P(k) \propto k^{\beta}$, with $\beta < 0$, with a specified index $1 < |\beta| < 3$. $F$ is the Fourier transform of $H$. It is an implementation of the algorithm by \href{http://www.eos.ubc.ca/research/clouds/radjp416}{\tt Lewis \& Austin (2002)}, used by, e.\+g., \href{http://stacks.iop.org/0004-637X/591/i=1/a=238}{\tt Sutherland \& Bicknell (2003)}, \href{http://adsabs.harvard.edu/abs/2007ApJS..173...37S}{\tt Sutherland \& Bicknell (2007)} to generate fractal gas clouds such as the one used by \href{http://adsabs.harvard.edu/abs/2007ApJ...670L.109B}{\tt Bland-\/\+Hawthorn et al. (2007)} and \href{http://adsabs.harvard.edu/abs/2015ApJ...813...94T}{\tt Tepper-\/\+Garcia et al. (2015a)}. For now only available in serial. Note that 1\+D simulation power spectra are very noisy, since their value at each wavenumber includes at most two contributions. In contrast, 8$\ast$(k-\/1) and 2$\ast$(12$\ast$(k-\/1)$\ast$(k-\/1) + 1) values enter into the calculation of the power spectrum at k = 1, 2, ... in 2\+D and 3\+D simulations, respectively, and appear therefore smoother than 1\+D power spectra, even more with increasing k.
+
+\begin{DoxyAttention}{Attention}
+We make use of a number of routines provided by the Numerical Recipes (N\+R). These have all (and their appropriate arguments) been modified to be of type Real (float or double depending on the user\textquotesingle{}s choice) precision. For this reason, all the N\+R routine names have been pre-\/appended with a \textquotesingle{}d\textquotesingle{}, i.\+e. {\ttfamily gasdev} has been renamed to {\ttfamily dgasdev}. Also, N\+R routines adopt the \char`\"{}unit-\/offset\char`\"{} convention, meaning that the lowest subscript of an array is 1 (rather than 0 as in A\+N\+S\+I C). We use the functions provided by {\ttfamily dnrutil} to allocate matrices and tensors for consistency with other N\+R routines.~\newline
+ Both the Gaussian ad log-\/normal random field are considered {\itshape complex} (although the imaginary part is set to 0 in the initial Gaussian random field), since their respective Fourier transform will be in general complex. For this reason, we use of the routines {\ttfamily dfour1} and {\ttfamily dfourn} to compute F\+F\+T in 1 and 2,3 dimensions, respectively. Note that C does not provide a complex data type, and thus a complex number consists of a pair of real numbers, each member representing the real and imaginary part, respectively.
+\end{DoxyAttention}
+{\bfseries Compilation} (or replace gcc-\/mp-\/4.\+9 by your gcc compiler)
+
+\$$>$ gcc-\/mp-\/4.\+9 \hyperlink{dnrutil_8c_source}{dnrutil.\+c} \hyperlink{dlubksb_8c_source}{dlubksb.\+c} \hyperlink{dludcmp_8c_source}{dludcmp.\+c} \hyperlink{dsavgol_8c_source}{dsavgol.\+c} \hyperlink{dfour1_8c_source}{dfour1.\+c} \hyperlink{dfourn_8c_source}{dfourn.\+c} \hyperlink{dran1_8c_source}{dran1.\+c} \hyperlink{dgasdev_8c_source}{dgasdev.\+c} \hyperlink{dgammln_8c_source}{dgammln.\+c} \hyperlink{dgcf_8c_source}{dgcf.\+c} \hyperlink{dgser_8c_source}{dgser.\+c} \hyperlink{dgammq_8c_source}{dgammq.\+c} \hyperlink{dfit_8c_source}{dfit.\+c} \hyperlink{dlfit_8c_source}{dlfit.\+c} \hyperlink{dcovsrt_8c_source}{dcovsrt.\+c} \hyperlink{dgaussj_8c_source}{dgaussj.\+c} \hyperlink{alloc__funcs_8c_source}{alloc\+\_\+funcs.\+c} \hyperlink{fractal_clouds_8c}{fractal\+Clouds.\+c} -\/o fractal\+Clouds
+
+{\bfseries  Program call }
+
+\$$>$ ./fractal\+Clouds
+
+{\bfseries Output} 
+
+All files are simple binary files of type Real (4 or 8 byte depending on the user\textquotesingle{}s choice) per value. For a simulation with dimensionality N=1,2,3 and size D\+I\+M, these files are\+:
+\begin{DoxyItemize}
+\item {\ttfamily gauss\+Nd\+\_\+ini.\+bdat\+:} File with the initial Gaussian random field, and it contains $2({\rm DIM})^{\rm N}$ values. Each pair of consecutive values correspond to the real and imaginary part of a complex number representing the value of the field at $x$, $(x,y)$, or $(x,y,z)$ for N=1, 2, or 3, respectively. The values are stored contiguously along the $x$-\/coordinate, followed by $y$, and $z$.
+\item {\ttfamily  pow\+Spec\+Nd\+\_\+$<$field$>$\#.bdat }\+: Power spectrum $P(k)$ of the $<$field$>$ = gauss $\vert$ lognorm, at iteration number \#. The file contains D\+I\+M numbers, each representing the value of $P(k)$ at $k_n$, where $k_n = n$/\+D\+I\+M, $n = 0, 1, ...,$D\+I\+M-\/1.
+\item {\ttfamily  search\+Dir\+Nd\+\_\+\#.bdat }\+: Search direction, i.\+e., difference between target and current (at iteration number \#) power spectrum of log-\/normal random field. The data structure is the same as {\ttfamily  pow\+Spec\+Nd\+\_\+$<$field$>$\#.bdat}.
+\item {\ttfamily  $<$field$>$Nd\+\_\+filt }\+: Final random field, where $<$field$>$ = gauss $\vert$ lognorm. The data structure is the same as {\ttfamily gauss\+Nd\+\_\+ini.\+bdat}.
+\end{DoxyItemize}
+
+{\bfseries  Accompanying software }
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{plot_field_8gp_source}{plot\+Field.\+gp}\+:} An editable gnuplot script to visualise the result. Edits include setting the dimensionality of the problem, and the field to visualise. Requires gnuplot 4.\+6 or higher.
+\end{DoxyItemize}
+
+Script call\+:
+
+\$$>$ gnuplot \hyperlink{plot_field_8gp_source}{plot\+Field.\+gp}
+
+\begin{DoxyAuthor}{Authors}
+T.\+Tepper Garcia (\href{mailto:tepper@physics.usyd.edu.au}{\tt tepper@physics.\+usyd.\+edu.\+au})
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Nov 9, 2015
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}](!) = U\+R\+G\+E\+N\+T
+\begin{DoxyItemize}
+\item Encode convergence condition to terminate iteration
+\item Write initial guess for spectral density to disk (binary)
+\item Encapsulate computation of target spectral density into a callable function
+\item Encapsulate computation of power spectrum into a callable function
+\item Encapsulate computation of new spectral density into a callable function
+\item Encapsulate computation of search direction into a callable function
+\item Encapsulate writing of binary files into a callable function
+\item Expand \hyperlink{plot_field_8gp_source}{plot\+Field.\+gp} documentation
+\item Parallelise code
+\end{DoxyItemize}\end{DoxyRefDesc}
+
+
+{\bfseries  Modification history }
+
+
+\begin{DoxyItemize}
+\item 21 N\+O\+V 2016 (T\+T\+G)\+: Added binary dump of R\+E\+A\+L part of filtered Gaussian / lognormal field
+\item 2 D\+E\+C 2016 (T\+T\+G)\+: Introduced a new parameter (K\+M\+I\+N; minimum wavenumbe) to control the maximum cloudlet size, given by D\+I\+M / K\+M\+I\+N
+\end{DoxyItemize}
+
+{\bfseries References} 
+\begin{DoxyItemize}
+\item Press, W.\+H. and Teukolsky, S.\+A. and Vetterling, W.\+T. and Flannery, B.\+P., \char`\"{}\+Numerical Recipes in C\char`\"{}, Cambridge University Press, 1992, Second Edition
+\item Lewis, G. M. and Austin, P. H., \char`\"{}\+An iterative method for generating scaling log-\/normal simulations\char`\"{}, Proceedings of the 11th Conference on Atmospheric Radiation, 2002, American Meteorological Society Conference Series 123-\/126
+\item Sutherland, Ralph S. and Bicknell, Geoffrey V. and Dopita, Michael A., \char`\"{}\+The Numerical Simulation of Radiative Shocks. I\+I. Thermal Instabilities in Two-\/dimensional Models\char`\"{}, 2003, The Astrophysical Journal, Volume 591, Number 1, Pages, 238-\/257
+\item Sutherland, R.\+S. and Bicknell, G.\+V., \char`\"{}\+Interactions of a Light Hypersonic Jet with a Nonuniform Interstellar Medium\char`\"{}, The Astrophysical Journal Supplement, 2007, Volume 173, Pages 37-\/69 
+\end{DoxyItemize}
+
+\subsection{Function Documentation}
+\hypertarget{fractal_clouds_8c_ae8ac8c4c882deabed6593cac8c25ed93}{}\index{fractal\+Clouds.\+c@{fractal\+Clouds.\+c}!dfourn@{dfourn}}
+\index{dfourn@{dfourn}!fractal\+Clouds.\+c@{fractal\+Clouds.\+c}}
+\subsubsection[{dfourn(\+Real data[], unsigned long nn[], int ndim, int isign)}]{\setlength{\rightskip}{0pt plus 5cm}void dfourn (
+\begin{DoxyParamCaption}
+\item[{Real}]{data\mbox{[}$\,$\mbox{]}, }
+\item[{unsigned long}]{nn\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{ndim, }
+\item[{int}]{isign}
+\end{DoxyParamCaption}
+)}\label{fractal_clouds_8c_ae8ac8c4c882deabed6593cac8c25ed93}
+Replaces data by its ndim-\/dimensional discrete Fourier transform, if isign is input as 1. nn\mbox{[}1..ndim\mbox{]} is an integer array containing the length of each dimension (number of complex values), which M\+U\+S\+T all be powers of 2. data is a real array of length twice the product of these lengths, in which the data are stored as in a multidimensional complex array\+: real and imaginary parts of each element are in consecutive locations, and the rightmost index of the array increases most rapidly as one proceeds along data. For a two-\/dimensional array, this is equivalent to storing the array by rows. If isign is input as -\/1, data is replaced by its inverse transform times the product of the lengths of all dimensions. 
+
+Definition at line 5 of file dfourn.\+c.
+
+
+
+Referenced by main().
+
+\hypertarget{fractal_clouds_8c_ad0668833fda9670b2eab57dec1055407}{}\index{fractal\+Clouds.\+c@{fractal\+Clouds.\+c}!dgasdev@{dgasdev}}
+\index{dgasdev@{dgasdev}!fractal\+Clouds.\+c@{fractal\+Clouds.\+c}}
+\subsubsection[{dgasdev(long $\ast$idum)}]{\setlength{\rightskip}{0pt plus 5cm}Real dgasdev (
+\begin{DoxyParamCaption}
+\item[{long $\ast$}]{idum}
+\end{DoxyParamCaption}
+)}\label{fractal_clouds_8c_ad0668833fda9670b2eab57dec1055407}
+Returns a normally distributed deviate with zero mean and unit variance, using dran1(idum) as the source of uniform deviates.
+
+Definition at line 4 of file dgasdev.\+c.
+
+
+
+References dran1().
+
+
+
+Referenced by main().
+
+\hypertarget{fractal_clouds_8c_a708122911cdad73c7f5f4b6ca10fcb73}{}\index{fractal\+Clouds.\+c@{fractal\+Clouds.\+c}!dlfit@{dlfit}}
+\index{dlfit@{dlfit}!fractal\+Clouds.\+c@{fractal\+Clouds.\+c}}
+\subsubsection[{dlfit(\+Real x[], Real y[], Real sig[], int ndat, Real a[], int ia[], int ma, Real $\ast$$\ast$covar, Real $\ast$chisq, void($\ast$funcs)(\+Real, Real[], int))}]{\setlength{\rightskip}{0pt plus 5cm}void dlfit (
+\begin{DoxyParamCaption}
+\item[{Real}]{x\mbox{[}$\,$\mbox{]}, }
+\item[{Real}]{y\mbox{[}$\,$\mbox{]}, }
+\item[{Real}]{sig\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{ndat, }
+\item[{Real}]{a\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{ia\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{ma, }
+\item[{Real $\ast$$\ast$}]{covar, }
+\item[{Real $\ast$}]{chisq, }
+\item[{void($\ast$)(Real, Real\mbox{[}$\,$\mbox{]}, int)}]{funcs}
+\end{DoxyParamCaption}
+)}\label{fractal_clouds_8c_a708122911cdad73c7f5f4b6ca10fcb73}
+Given a set of data points x\mbox{[}1..ndat\mbox{]}, y\mbox{[}1..ndat\mbox{]} with individual standard deviations sig\mbox{[}1..ndat\mbox{]}, use $\chi^2$ minimization to fit for some or all of the coefficients a\mbox{[}1..ma\mbox{]} of a function that depends linearly on a, y = sum(ai$\ast$afunci(x)). The input array ia\mbox{[}1..ma\mbox{]} indicates by nonzero entries those components of a that should be fitted for, and by zero entries those components that should be held fixed at their input values. The program returns values for a\mbox{[}1..ma\mbox{]}, $\chi^2$ = chisq, and the covariance matrix covar\mbox{[}1..ma\mbox{]}\mbox{[}1..ma\mbox{]}. (Parameters held fixed will return zero covariances.) The user supplies a routine funcs(x,afunc,ma) that returns the ma basis functions evaluated at x = x in the array afunc\mbox{[}1..ma\mbox{]}. 
+
+Definition at line 5 of file dlfit.\+c.
+
+
+
+Referenced by main().
+
+\hypertarget{fractal_clouds_8c_ad24ce1ceb07571998ddd87a5170417f7}{}\index{fractal\+Clouds.\+c@{fractal\+Clouds.\+c}!dran1@{dran1}}
+\index{dran1@{dran1}!fractal\+Clouds.\+c@{fractal\+Clouds.\+c}}
+\subsubsection[{dran1(long $\ast$idum)}]{\setlength{\rightskip}{0pt plus 5cm}Real dran1 (
+\begin{DoxyParamCaption}
+\item[{long $\ast$}]{idum}
+\end{DoxyParamCaption}
+)}\label{fractal_clouds_8c_ad24ce1ceb07571998ddd87a5170417f7}
+“\+Minimal” random number generator of Park and Miller with Bays-\/\+Durham shuffle and added safeguards. Returns a uniform random deviate between 0.\+0 and 1.\+0 (exclusive of the endpoint values). Call with idum a negative integer to initialize; thereafter, do not alter idum between successive deviates in a sequence. R\+N\+M\+X should approximate the largest doubleing value that is less than 1. 
+
+Definition at line 13 of file dran1.\+c.
+
+
+
+Referenced by dgasdev().
+
+\hypertarget{fractal_clouds_8c_a0ddf1224851353fc92bfbff6f499fa97}{}\index{fractal\+Clouds.\+c@{fractal\+Clouds.\+c}!main@{main}}
+\index{main@{main}!fractal\+Clouds.\+c@{fractal\+Clouds.\+c}}
+\subsubsection[{main(int argc, char $\ast$argv[])}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{fractal_clouds_8c_a0ddf1224851353fc92bfbff6f499fa97}
+Main Program
+
+Definition at line 143 of file fractal\+Clouds.\+c.
+
+
+
+References dfourn(), dgasdev(), dlfit(), poly(), and sed().
+
+\hypertarget{fractal_clouds_8c_a0cab6f6ad3b48f7d25956838225d07dc}{}\index{fractal\+Clouds.\+c@{fractal\+Clouds.\+c}!poly@{poly}}
+\index{poly@{poly}!fractal\+Clouds.\+c@{fractal\+Clouds.\+c}}
+\subsubsection[{poly(\+Real x, Real pn[], int n)}]{\setlength{\rightskip}{0pt plus 5cm}void poly (
+\begin{DoxyParamCaption}
+\item[{Real}]{x, }
+\item[{Real}]{pn\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{fractal_clouds_8c_a0cab6f6ad3b48f7d25956838225d07dc}
+Computes and returns in order in array pn each of the n+1 terms of a polynomial of degree n evaluated at x
+
+Definition at line 3036 of file fractal\+Clouds.\+c.
+
+
+
+Referenced by main().
+
+\hypertarget{fractal_clouds_8c_a3247fe4ebaa8e879559dcd2ff56e8d77}{}\index{fractal\+Clouds.\+c@{fractal\+Clouds.\+c}!sed@{sed}}
+\index{sed@{sed}!fractal\+Clouds.\+c@{fractal\+Clouds.\+c}}
+\subsubsection[{sed(\+Real k, Real s)}]{\setlength{\rightskip}{0pt plus 5cm}Real sed (
+\begin{DoxyParamCaption}
+\item[{Real}]{k, }
+\item[{Real}]{s}
+\end{DoxyParamCaption}
+)}\label{fractal_clouds_8c_a3247fe4ebaa8e879559dcd2ff56e8d77}
+Returns the value of a power-\/law k$^\wedge$s
+
+Definition at line 3010 of file fractal\+Clouds.\+c.
+
+
+
+Referenced by main().
+
+\hypertarget{fractal_clouds_8c_aa4a1a822ffa555d11a6835ccb15ee00c}{}\index{fractal\+Clouds.\+c@{fractal\+Clouds.\+c}!wrap@{wrap}}
+\index{wrap@{wrap}!fractal\+Clouds.\+c@{fractal\+Clouds.\+c}}
+\subsubsection[{wrap(short i, short n, short m)}]{\setlength{\rightskip}{0pt plus 5cm}short wrap (
+\begin{DoxyParamCaption}
+\item[{short}]{i, }
+\item[{short}]{n, }
+\item[{short}]{m}
+\end{DoxyParamCaption}
+)}\label{fractal_clouds_8c_aa4a1a822ffa555d11a6835ccb15ee00c}
+Calculates the value of index i wrapped-\/around (to the right) n places on an array of size m
+
+Definition at line 3020 of file fractal\+Clouds.\+c.
+

@@ -1,0 +1,67 @@
+\form#0:$|F|^2 \propto k^beta$
+\form#1:$|F|^2 \propto k^{beta}$
+\form#2:$\beta < 0$
+\form#3:$1 < |\beta| < 3$
+\form#4:$G$
+\form#5:$F$
+\form#6:$|F|^2 \propto k^{\beta}$
+\form#7:$\chi^2$
+\form#8:$\beta$
+\form#9:$P(k) \propto k^{\beta}$
+\form#10:$n$
+\form#11:$|F|^2$
+\form#12:$k^s$
+\form#13:$s = beta - (n - 1)$
+\form#14:$s = \beta - (n - 1)$
+\form#15:$k_n$
+\form#16:$k_n = \frac{n}{DIM}$
+\form#17:$n = 0, 1, ..., DIM-1$
+\form#18:$k_n = n$
+\form#19:$n = 0, 1, ...,$
+\form#20:$x$
+\form#21:$(x,y)$
+\form#22:$(x,y,z)$
+\form#23:$y$
+\form#24:$z$
+\form#25:$P(k)$
+\form#26:$N$
+\form#27:$(2DIM)^N$
+\form#28:$(2{\rm DIM})^{\rm N}$
+\form#29:$H$
+\form#30:\[ A\cos\phi = B\exp\left(\frac{y}{q}\right) \]
+\form#31:$ x^2-y^2 = 0$
+\form#32:$2({\rm DIM})^{\rm N}$
+\form#33:$\beta = -1.5$
+\form#34:$\mu = 0$
+\form#35:$\sigma^2 = 4$
+\form#36:$mu = 0$
+\form#37:$m = 0$
+\form#38:$s^2 = 4$
+\form#39:$\mu$
+\form#40:$\sigma$
+\form#41:$m$
+\form#42:$s$
+\form#43:$s^2 = 1$
+\form#44:$ \mu, \, \sigma $
+\form#45:$ k_{min} > $
+\form#46:$ k >= k_{min} $
+\form#47:$ \sim$
+\form#48:$k_{min}$
+\form#49:$ \mu = 1 $
+\form#50:$ \sigma^2 = 5 $
+\form#51:$ m = -0.896 $
+\form#52:$ \sigma = 1.34 $
+\form#53:$ 256^3 $
+\form#54:$ k_{min} >= 20 $
+\form#55:$ \beta = -5/3 $
+\form#56:$ 128/20 \approx 6$
+\form#57:$ \mu $
+\form#58:$ \sigma^2 $
+\form#59:$ k_{min} \geq 20 $
+\form#60:$(2 k_{min})$
+\form#61:$/(2 k_{min})$
+\form#62:${\rm DIM}/(2 k_{min})$
+\form#63:$ DIM $
+\form#64:$DIM/2$
+\form#65:$ {\rm DIM} $
+\form#66:${\rm DIM}/2$

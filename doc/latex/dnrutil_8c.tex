@@ -1,0 +1,397 @@
+\hypertarget{dnrutil_8c}{}\section{dnrutil.\+c File Reference}
+\label{dnrutil_8c}\index{dnrutil.\+c@{dnrutil.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{dnrutil_8c_a71212bcd68ee44b80905c37c538cecff}{N\+R\+\_\+\+E\+N\+D}~1
+\item 
+\#define \hyperlink{dnrutil_8c_ae6416b4cb6bfb8e50f7c4a083d2fb745}{F\+R\+E\+E\+\_\+\+A\+R\+G}~char$\ast$
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dnrutil_8c_a210a7b2c1614a1ab2a0c4ecfa230dcd7}{nrerror} (error\+\_\+text)
+\item 
+double $\ast$ \hyperlink{dnrutil_8c_a7ec2c57cf3bac7c0c80e64a03fbcd15c}{vector} (long nl, long nh)
+\item 
+int $\ast$ \hyperlink{dnrutil_8c_af5a03b82f69c4f141f5a96720fb293c3}{ivector} (long nl, long nh)
+\item 
+unsigned char $\ast$ \hyperlink{dnrutil_8c_a3f10e6e63bd119cb6cb61abb156fa53a}{cvector} (long nl, long nh)
+\item 
+unsigned long $\ast$ \hyperlink{dnrutil_8c_a4d1051336abaf9dbbecffd46c2a8505f}{lvector} (long nl, long nh)
+\item 
+double $\ast$ \hyperlink{dnrutil_8c_a73f5f9ece0bd0ede1affa44e28c72081}{dvector} (long nl, long nh)
+\item 
+double $\ast$$\ast$ \hyperlink{dnrutil_8c_a4b5220c033641c9b750a373a9f72e5d9}{matrix} (long nrl, long nrh, long ncl, long nch)
+\item 
+double $\ast$$\ast$ \hyperlink{dnrutil_8c_a37bd22e1a2bf0e8b3d8ba7e768fe0b98}{dmatrix} (long nrl, long nrh, long ncl, long nch)
+\item 
+int $\ast$$\ast$ \hyperlink{dnrutil_8c_ac58ea1820e6ccae946de346c1d7fae1f}{imatrix} (long nrl, long nrh, long ncl, long nch)
+\item 
+double $\ast$$\ast$ \hyperlink{dnrutil_8c_ad18c6b9043d36d0636373e22f69c370a}{submatrix} (double $\ast$$\ast$a, long oldrl, long oldrh, long oldcl, long oldch, long newrl, long newcl)
+\item 
+double $\ast$$\ast$ \hyperlink{dnrutil_8c_acca78f29e2c1e511cf0ea1e4ad64a714}{convert\+\_\+matrix} (double $\ast$a, long nrl, long nrh, long ncl, long nch)
+\item 
+double $\ast$$\ast$$\ast$ \hyperlink{dnrutil_8c_a43ba4e3f17a4661892b73ecb56c9869a}{f3tensor} (long nrl, long nrh, long ncl, long nch, long ndl, long ndh)
+\item 
+void \hyperlink{dnrutil_8c_a4490ae7123f2baa4ee01d7db32fc63cf}{free\+\_\+vector} (double $\ast$v, long nl, long nh)
+\item 
+void \hyperlink{dnrutil_8c_a15d431001f2a68ce4669efe823266e7e}{free\+\_\+ivector} (int $\ast$v, long nl, long nh)
+\item 
+void \hyperlink{dnrutil_8c_adcf016abc500425950a6ca3c21bb6224}{free\+\_\+cvector} (unsigned char $\ast$v, long nl, long nh)
+\item 
+void \hyperlink{dnrutil_8c_a08a014ff137c0069b371cf6b2984d810}{free\+\_\+lvector} (unsigned long $\ast$v, long nl, long nh)
+\item 
+void \hyperlink{dnrutil_8c_ac7ec1a76a4b8d3d8423246676977c919}{free\+\_\+dvector} (double $\ast$v, long nl, long nh)
+\item 
+void \hyperlink{dnrutil_8c_ad5562214740ec1d1c8077b78d9b8683d}{free\+\_\+matrix} (double $\ast$$\ast$m, long nrl, long nrh, long ncl, long nch)
+\item 
+void \hyperlink{dnrutil_8c_a04fbc9bc53e6303830eb4338bc1f3259}{free\+\_\+dmatrix} (double $\ast$$\ast$m, long nrl, long nrh, long ncl, long nch)
+\item 
+void \hyperlink{dnrutil_8c_aefc01b3e130f9ecc15c4a376ba987bae}{free\+\_\+imatrix} (int $\ast$$\ast$m, long nrl, long nrh, long ncl, long nch)
+\item 
+void \hyperlink{dnrutil_8c_a383fc750ce52c405da712046912565fe}{free\+\_\+submatrix} (double $\ast$$\ast$b, long nrl, long nrh, long ncl, long nch)
+\item 
+void \hyperlink{dnrutil_8c_ac380c46f4238171e66c75564e002bc48}{free\+\_\+convert\+\_\+matrix} (double $\ast$$\ast$b, long nrl, long nrh, long ncl, long nch)
+\item 
+void \hyperlink{dnrutil_8c_aed3fc0a561bcce6e52d404af190f823b}{free\+\_\+f3tensor} (double $\ast$$\ast$$\ast$t, long nrl, long nrh, long ncl, long nch, long ndl, long ndh)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{dnrutil_8c_ae6416b4cb6bfb8e50f7c4a083d2fb745}{}\index{dnrutil.\+c@{dnrutil.\+c}!F\+R\+E\+E\+\_\+\+A\+R\+G@{F\+R\+E\+E\+\_\+\+A\+R\+G}}
+\index{F\+R\+E\+E\+\_\+\+A\+R\+G@{F\+R\+E\+E\+\_\+\+A\+R\+G}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{F\+R\+E\+E\+\_\+\+A\+R\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+R\+E\+E\+\_\+\+A\+R\+G~char$\ast$}\label{dnrutil_8c_ae6416b4cb6bfb8e50f7c4a083d2fb745}
+
+
+Definition at line 295 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a71212bcd68ee44b80905c37c538cecff}{}\index{dnrutil.\+c@{dnrutil.\+c}!N\+R\+\_\+\+E\+N\+D@{N\+R\+\_\+\+E\+N\+D}}
+\index{N\+R\+\_\+\+E\+N\+D@{N\+R\+\_\+\+E\+N\+D}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{N\+R\+\_\+\+E\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+R\+\_\+\+E\+N\+D~1}\label{dnrutil_8c_a71212bcd68ee44b80905c37c538cecff}
+
+
+Definition at line 294 of file dnrutil.\+c.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{dnrutil_8c_acca78f29e2c1e511cf0ea1e4ad64a714}{}\index{dnrutil.\+c@{dnrutil.\+c}!convert\+\_\+matrix@{convert\+\_\+matrix}}
+\index{convert\+\_\+matrix@{convert\+\_\+matrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{convert\+\_\+matrix}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ convert\+\_\+matrix (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{a, }
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_acca78f29e2c1e511cf0ea1e4ad64a714}
+
+
+Definition at line 461 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a3f10e6e63bd119cb6cb61abb156fa53a}{}\index{dnrutil.\+c@{dnrutil.\+c}!cvector@{cvector}}
+\index{cvector@{cvector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{cvector}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char$\ast$ cvector (
+\begin{DoxyParamCaption}
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a3f10e6e63bd119cb6cb61abb156fa53a}
+
+
+Definition at line 331 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a37bd22e1a2bf0e8b3d8ba7e768fe0b98}{}\index{dnrutil.\+c@{dnrutil.\+c}!dmatrix@{dmatrix}}
+\index{dmatrix@{dmatrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{dmatrix}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ dmatrix (
+\begin{DoxyParamCaption}
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a37bd22e1a2bf0e8b3d8ba7e768fe0b98}
+
+
+Definition at line 389 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a73f5f9ece0bd0ede1affa44e28c72081}{}\index{dnrutil.\+c@{dnrutil.\+c}!dvector@{dvector}}
+\index{dvector@{dvector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{dvector}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ dvector (
+\begin{DoxyParamCaption}
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a73f5f9ece0bd0ede1affa44e28c72081}
+
+
+Definition at line 353 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a43ba4e3f17a4661892b73ecb56c9869a}{}\index{dnrutil.\+c@{dnrutil.\+c}!f3tensor@{f3tensor}}
+\index{f3tensor@{f3tensor}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{f3tensor}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$$\ast$ f3tensor (
+\begin{DoxyParamCaption}
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch, }
+\item[{long}]{ndl, }
+\item[{long}]{ndh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a43ba4e3f17a4661892b73ecb56c9869a}
+
+
+Definition at line 485 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_ac380c46f4238171e66c75564e002bc48}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+convert\+\_\+matrix@{free\+\_\+convert\+\_\+matrix}}
+\index{free\+\_\+convert\+\_\+matrix@{free\+\_\+convert\+\_\+matrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+convert\+\_\+matrix}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+convert\+\_\+matrix (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{b, }
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_ac380c46f4238171e66c75564e002bc48}
+
+
+Definition at line 596 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_adcf016abc500425950a6ca3c21bb6224}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+cvector@{free\+\_\+cvector}}
+\index{free\+\_\+cvector@{free\+\_\+cvector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+cvector}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+cvector (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{v, }
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_adcf016abc500425950a6ca3c21bb6224}
+
+
+Definition at line 537 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a04fbc9bc53e6303830eb4338bc1f3259}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+dmatrix@{free\+\_\+dmatrix}}
+\index{free\+\_\+dmatrix@{free\+\_\+dmatrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+dmatrix}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+dmatrix (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{m, }
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a04fbc9bc53e6303830eb4338bc1f3259}
+
+
+Definition at line 570 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_ac7ec1a76a4b8d3d8423246676977c919}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+dvector@{free\+\_\+dvector}}
+\index{free\+\_\+dvector@{free\+\_\+dvector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+dvector}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+dvector (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{v, }
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_ac7ec1a76a4b8d3d8423246676977c919}
+
+
+Definition at line 553 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_aed3fc0a561bcce6e52d404af190f823b}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+f3tensor@{free\+\_\+f3tensor}}
+\index{free\+\_\+f3tensor@{free\+\_\+f3tensor}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+f3tensor}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+f3tensor (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$$\ast$}]{t, }
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch, }
+\item[{long}]{ndl, }
+\item[{long}]{ndh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_aed3fc0a561bcce6e52d404af190f823b}
+
+
+Definition at line 604 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_aefc01b3e130f9ecc15c4a376ba987bae}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+imatrix@{free\+\_\+imatrix}}
+\index{free\+\_\+imatrix@{free\+\_\+imatrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+imatrix}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+imatrix (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{m, }
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_aefc01b3e130f9ecc15c4a376ba987bae}
+
+
+Definition at line 579 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a15d431001f2a68ce4669efe823266e7e}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+ivector@{free\+\_\+ivector}}
+\index{free\+\_\+ivector@{free\+\_\+ivector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+ivector}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+ivector (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{v, }
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a15d431001f2a68ce4669efe823266e7e}
+
+
+Definition at line 529 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a08a014ff137c0069b371cf6b2984d810}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+lvector@{free\+\_\+lvector}}
+\index{free\+\_\+lvector@{free\+\_\+lvector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+lvector}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+lvector (
+\begin{DoxyParamCaption}
+\item[{unsigned long $\ast$}]{v, }
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a08a014ff137c0069b371cf6b2984d810}
+
+
+Definition at line 545 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_ad5562214740ec1d1c8077b78d9b8683d}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+matrix@{free\+\_\+matrix}}
+\index{free\+\_\+matrix@{free\+\_\+matrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+matrix}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+matrix (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{m, }
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_ad5562214740ec1d1c8077b78d9b8683d}
+
+
+Definition at line 561 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a383fc750ce52c405da712046912565fe}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+submatrix@{free\+\_\+submatrix}}
+\index{free\+\_\+submatrix@{free\+\_\+submatrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+submatrix}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+submatrix (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{b, }
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a383fc750ce52c405da712046912565fe}
+
+
+Definition at line 588 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a4490ae7123f2baa4ee01d7db32fc63cf}{}\index{dnrutil.\+c@{dnrutil.\+c}!free\+\_\+vector@{free\+\_\+vector}}
+\index{free\+\_\+vector@{free\+\_\+vector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{free\+\_\+vector}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+vector (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{v, }
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a4490ae7123f2baa4ee01d7db32fc63cf}
+
+
+Definition at line 521 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_ac58ea1820e6ccae946de346c1d7fae1f}{}\index{dnrutil.\+c@{dnrutil.\+c}!imatrix@{imatrix}}
+\index{imatrix@{imatrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{imatrix}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$$\ast$ imatrix (
+\begin{DoxyParamCaption}
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_ac58ea1820e6ccae946de346c1d7fae1f}
+
+
+Definition at line 414 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_af5a03b82f69c4f141f5a96720fb293c3}{}\index{dnrutil.\+c@{dnrutil.\+c}!ivector@{ivector}}
+\index{ivector@{ivector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{ivector}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ ivector (
+\begin{DoxyParamCaption}
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_af5a03b82f69c4f141f5a96720fb293c3}
+
+
+Definition at line 320 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a4d1051336abaf9dbbecffd46c2a8505f}{}\index{dnrutil.\+c@{dnrutil.\+c}!lvector@{lvector}}
+\index{lvector@{lvector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{lvector}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long$\ast$ lvector (
+\begin{DoxyParamCaption}
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a4d1051336abaf9dbbecffd46c2a8505f}
+
+
+Definition at line 342 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a4b5220c033641c9b750a373a9f72e5d9}{}\index{dnrutil.\+c@{dnrutil.\+c}!matrix@{matrix}}
+\index{matrix@{matrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{matrix}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ matrix (
+\begin{DoxyParamCaption}
+\item[{long}]{nrl, }
+\item[{long}]{nrh, }
+\item[{long}]{ncl, }
+\item[{long}]{nch}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a4b5220c033641c9b750a373a9f72e5d9}
+
+
+Definition at line 364 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a210a7b2c1614a1ab2a0c4ecfa230dcd7}{}\index{dnrutil.\+c@{dnrutil.\+c}!nrerror@{nrerror}}
+\index{nrerror@{nrerror}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{nrerror}]{\setlength{\rightskip}{0pt plus 5cm}void nrerror (
+\begin{DoxyParamCaption}
+\item[{error\+\_\+text}]{}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a210a7b2c1614a1ab2a0c4ecfa230dcd7}
+
+
+Definition at line 297 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_ad18c6b9043d36d0636373e22f69c370a}{}\index{dnrutil.\+c@{dnrutil.\+c}!submatrix@{submatrix}}
+\index{submatrix@{submatrix}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{submatrix}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ submatrix (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{a, }
+\item[{long}]{oldrl, }
+\item[{long}]{oldrh, }
+\item[{long}]{oldcl, }
+\item[{long}]{oldch, }
+\item[{long}]{newrl, }
+\item[{long}]{newcl}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_ad18c6b9043d36d0636373e22f69c370a}
+
+
+Definition at line 440 of file dnrutil.\+c.
+
+\hypertarget{dnrutil_8c_a7ec2c57cf3bac7c0c80e64a03fbcd15c}{}\index{dnrutil.\+c@{dnrutil.\+c}!vector@{vector}}
+\index{vector@{vector}!dnrutil.\+c@{dnrutil.\+c}}
+\subsubsection[{vector}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ vector (
+\begin{DoxyParamCaption}
+\item[{long}]{nl, }
+\item[{long}]{nh}
+\end{DoxyParamCaption}
+)}\label{dnrutil_8c_a7ec2c57cf3bac7c0c80e64a03fbcd15c}
+
+
+Definition at line 309 of file dnrutil.\+c.
+

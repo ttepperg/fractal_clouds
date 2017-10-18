@@ -1,0 +1,78 @@
+\hypertarget{alloc__funcs_8h}{}\section{alloc\+\_\+funcs.\+h File Reference}
+\label{alloc__funcs_8h}\index{alloc\+\_\+funcs.\+h@{alloc\+\_\+funcs.\+h}}
+
+
+Memory allocation functions.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{alloc__funcs_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{alloc__funcs_8h_ab6882747761a2d6853d803d52e81a436}{alloc1\+D\+Arr} (size\+\_\+t elemsize, int ni)
+\item 
+void $\ast$$\ast$ \hyperlink{alloc__funcs_8h_a92fb5b6c8d3d34752c4dd08d1dbaf13d}{alloc2\+D\+Arr} (size\+\_\+t elemsize, int nj, int ni)
+\item 
+void $\ast$$\ast$$\ast$ \hyperlink{alloc__funcs_8h_a6da61bb7a165ef920c323a222c24a919}{alloc3\+D\+Arr} (size\+\_\+t elemsize, int nk, int nj, int ni)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Memory allocation functions. 
+
+Provides the functions to allocate a 1\+D, 2\+D, or 3\+D array as a contiguous block of memory. For 2d (3\+D) arrays, the right most index (i.\+e., ni here) runs over contiguous memory chunks, followed by nj, and nk (if defined). 
+
+\subsection{Function Documentation}
+\hypertarget{alloc__funcs_8h_ab6882747761a2d6853d803d52e81a436}{}\index{alloc\+\_\+funcs.\+h@{alloc\+\_\+funcs.\+h}!alloc1\+D\+Arr@{alloc1\+D\+Arr}}
+\index{alloc1\+D\+Arr@{alloc1\+D\+Arr}!alloc\+\_\+funcs.\+h@{alloc\+\_\+funcs.\+h}}
+\subsubsection[{alloc1\+D\+Arr(size\+\_\+t elemsize, int ni)}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ alloc1\+D\+Arr (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{elemsize, }
+\item[{int}]{ni}
+\end{DoxyParamCaption}
+)}\label{alloc__funcs_8h_ab6882747761a2d6853d803d52e81a436}
+returns a pointer to a contiguos block memory of ni elements; size in bytes is ni $\ast$ elemsize
+
+Definition at line 8 of file alloc\+\_\+funcs.\+c.
+
+\hypertarget{alloc__funcs_8h_a92fb5b6c8d3d34752c4dd08d1dbaf13d}{}\index{alloc\+\_\+funcs.\+h@{alloc\+\_\+funcs.\+h}!alloc2\+D\+Arr@{alloc2\+D\+Arr}}
+\index{alloc2\+D\+Arr@{alloc2\+D\+Arr}!alloc\+\_\+funcs.\+h@{alloc\+\_\+funcs.\+h}}
+\subsubsection[{alloc2\+D\+Arr(size\+\_\+t elemsize, int nj, int ni)}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$$\ast$ alloc2\+D\+Arr (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{elemsize, }
+\item[{int}]{nj, }
+\item[{int}]{ni}
+\end{DoxyParamCaption}
+)}\label{alloc__funcs_8h_a92fb5b6c8d3d34752c4dd08d1dbaf13d}
+returns a pointer to a pointer to a contiguos block memory of nj $\ast$ ni elements; size in bytes is nj $\ast$ ni $\ast$ elemsize
+
+Definition at line 23 of file alloc\+\_\+funcs.\+c.
+
+
+
+Referenced by alloc3\+D\+Arr().
+
+\hypertarget{alloc__funcs_8h_a6da61bb7a165ef920c323a222c24a919}{}\index{alloc\+\_\+funcs.\+h@{alloc\+\_\+funcs.\+h}!alloc3\+D\+Arr@{alloc3\+D\+Arr}}
+\index{alloc3\+D\+Arr@{alloc3\+D\+Arr}!alloc\+\_\+funcs.\+h@{alloc\+\_\+funcs.\+h}}
+\subsubsection[{alloc3\+D\+Arr(size\+\_\+t elemsize, int nk, int nj, int ni)}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$$\ast$$\ast$ alloc3\+D\+Arr (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{elemsize, }
+\item[{int}]{nk, }
+\item[{int}]{nj, }
+\item[{int}]{ni}
+\end{DoxyParamCaption}
+)}\label{alloc__funcs_8h_a6da61bb7a165ef920c323a222c24a919}
+returns a pointer to a pointer to a pointer to a contiguos block memory of nk $\ast$ nj $\ast$ ni elements; size in bytes is nk $\ast$ nj $\ast$ ni $\ast$ elemsize
+
+Definition at line 56 of file alloc\+\_\+funcs.\+c.
+
+
+
+References alloc2\+D\+Arr().
+
