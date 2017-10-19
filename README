@@ -1,5 +1,15 @@
 (C) Thor Tepper-Garcia (2017)
 
+# Documentation
+
+For detailed information about this code, please refer to the website give
+above, or open in a browser the file (see left colum):
+
+Source -> doc -> html -> index.html
+
+.
+
+
 # Installation
 
 If you have a working C compiler on your system, installing this programm
@@ -30,6 +40,5 @@ DO NOT FORGET TO RE-COMPILE AFTER EDITING FOR THE CHANGES TO HAVE AN EFFECT!
 
 # Output
 
-For more information about this program, the input parameters, output, 
-etc., please consult the documentation; e.g. open in a browser the file doc/html/index.html.
+Please consult the documentation for details on the output.
 
