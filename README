@@ -12,7 +12,7 @@ Source -> doc -> html -> index.html
 
 # Installation
 
-If you have a working C compiler on your system, installing this programm
+If you have a working GNU C compiler on your system, installing this programm
 should be as easy as running the compiling script provided with this
 distribution in the shell:
 
