@@ -18,6 +18,9 @@ distribution in the shell:
 
 ?> ./compile_script.bash
 
+NOTE: Edit the above script to change the currently used 'gcc' compiler to one
+appropriate to your system.
+
 
 # Run
 
