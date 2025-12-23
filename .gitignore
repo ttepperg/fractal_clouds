@@ -1,1 +1,6 @@
 .DS_Store
+Doxyfile
+DoxygenLayout.xml
+fractalClouds
+fractalClouds.dox
+misc/
